@@ -1,0 +1,33 @@
+{
+  "Routes": [
+    ///Author
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Login/author-login",
+      "DownstreamScheme": "http",
+      "ServiceName": "authorService",
+      "UpstreamPathTemplate": "/api/gateway/Login/author-login",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Login/register-user",
+      "DownstreamScheme": "http",
+      "ServiceName": "authorService",
+      "UpstreamPathTemplate": "/api/gateway/Login/register-user",
+      "UpstreamHttpMethod": [ "Post" ]
+    }
+
+
+
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      //"BaseUrl": "http://localhost:30604",
+      "Host": "localhost",
+      "Port": "8500",
+      "Type": "Consul"
+    }
+  }
+
+}

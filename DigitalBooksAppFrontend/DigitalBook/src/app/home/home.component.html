@@ -1,0 +1,135 @@
+
+
+  <nav class="navbar navbar-expand-lg" style="background-color:snow;">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+      <B>keep track of all our books and make a habit of reading</B>
+    </div>
+  </nav>
+
+
+<div class="row">
+  
+  <div class="card">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <!-- <form [formGroup]="SearchBookModel.formBookGroup">-->
+      <div class="form-group row">
+        <div class="col-sm-2"><label>Title</label></div>
+        <div class=col-sm-3>
+          <input [(ngModel)]="SearchBookModel.title" class="form-control" type="text" #title="ngModel"
+            placeholder="Enter title" required />
+          <!--<div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert">
+            <div *ngIf="title.errors?.['required']">
+              <p style="color: red;">Title is required.</p>
+            </div>
+          </div>-->
+        </div>
+      </div>
+      <br />
+      <div class="form-group row">
+        <div class="col-sm-2"><label>Author</label></div>
+        <div class=col-sm-3>
+          <input [(ngModel)]="SearchBookModel.author" #author="ngModel" class="form-control" type="text"
+            placeholder="Enter author name" required />
+          <div *ngIf="author.invalid && (author.dirty || author.touched)" class="alert">
+            <div *ngIf="author.errors?.['required']">
+              <p style="color: red;">AuthorName is required.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-2"><label>Publisher</label></div>
+        <div class=col-sm-3>
+          <input [(ngModel)]="SearchBookModel.publisher" class="form-control" type="text" placeholder="Enter Publisher"
+            required />
+        </div>
+      </div>
+      <br />
+      <div class="form-group row">
+        <div class="col-sm-2"><label>Released Date</label></div>
+        <div class=col-sm-3>
+          <input [(ngModel)]="SearchBookModel.releaseddate" class="form-control" type="date" required />
+        </div>
+      </div>
+      <br />
+      <div class=" form-group row">
+        <div class="col-sm-2"><label hidden>Search</label></div>
+        <div class=col-sm-6>
+          <button class="btn btn-outline btn-warning" type="submit" value="Submit" (click)="searchbook()">Search
+            Book</button>
+        </div>
+      </div>
+      <!--</form>-->
+    </div>
+    <div class="card">
+      <!--<app-reader-grid  [grid-columns]="[{'colName':'id'},{'colName':'image'},{'colName':'title'},{'colName':'author'},{'colName':'content'}]"
+          [grid-data]="SearchBookModels" (grid-bookbuy)=buybook($event)></app-reader-grid>-->
+      <table class="table table-bordered ">
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>Image</td>
+            <td>Title</td>
+            <td>Author</td>
+            <td>Category</td>
+            <td>Price</td>
+            <td>Book Content</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of SearchBookModels">
+            <td>{{item.id}}</td>
+            <td><img src="https://samplecontainer.blob.core.windows.net/image/{{item.imageUrl}}" style="width: 100px;height: 100px;"></td>
+            <td>{{item.title}}</td>
+            <td>{{item.author}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.price}}</td>
+            <td style="overflow-y:scroll">{{item.content}}</td>
+            <td><a (click)="openModal(item.id)" style="height: 40px; " class="btn btn-warning">Read</a></td>
+            <td><a class="btn btn-warning" (click)="buybook(item.id)">Buy</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background: #ccc;">
+      <div class="modal-header"> <button type="button" (click)="closeModel()"   style="width:1px;"class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+      <div *ngFor="let mdata of SearchBookModels">
+        <p style="text-align: center;"><b>{{mdata.title}}</b></p>
+
+        <p style="text-align: center;">{{mdata.author}}</p>
+        <div class="modal-body">
+
+
+
+          <p>{{mdata.content}}</p>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="closeModel()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

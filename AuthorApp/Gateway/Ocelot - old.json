@@ -1,0 +1,38 @@
+{
+  "Routes": [
+    //-Author-
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Login/author-login",
+      "DownstreamScheme": "https",
+      "DownstreamHostandPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44365"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gateway/Login/author-login",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Login/register-user",
+      "DownstreamScheme": "https",
+      "DownstreamHostandPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44365"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gateway/author/register-user",
+      "UpstreamHttpMethod": [ "Post" ]
+    }
+
+
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:44301"
+  }
+
+}

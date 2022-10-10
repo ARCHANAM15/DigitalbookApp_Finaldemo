@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Search Books</h2>
+    </div>
+    <div class="card-body">
+     
+        <div class="row">
+            <div class="col-sm-2"><label>Title</label></div>
+            <div class=col-sm-3>
+               <input   [(ngModel)]="SearchBookModel.title"    class="form-control" type="text" placeholder="Enter title" required/>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-2"><label>Author</label></div>
+            <div class=col-sm-3>
+                <input [(ngModel)]="SearchBookModel.author" class="form-control" type="text" placeholder="Enter author name" required/>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-2"><label>Publisher</label></div>
+            <div class=col-sm-3>
+                <input [(ngModel)]="SearchBookModel.publisher"  class="form-control" type="text" placeholder="Enter Publisher"  required/>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-2"><label>Released Date</label></div>
+            <div class=col-sm-3>
+                <input [(ngModel)]="SearchBookModel.releaseddate" class="form-control"  [ngModelOptions]="{standalone: true}" type="date" required/>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-2"><label hidden>Search</label></div>
+            <div class=col-sm-6>
+                <button class="btn btn-outline btn-warning"  type="submit"  value="Submit" (click)="searchbook()">Search Book</button>
+            </div>
+        </div>
+ 
+      </div>
+     <!--<div class="card">
+        <app-reader-grid  [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'author'},{'colName':'publisher'},{'colName':'content'},{'colName':'action'}]"
+        [grid-data]="SearchBookModels" (grid-bookbuy)="buyABook($event)" ></app-reader-grid>
+        
+    </div>-->
+</div>
+
+
+
+
+  
+ 

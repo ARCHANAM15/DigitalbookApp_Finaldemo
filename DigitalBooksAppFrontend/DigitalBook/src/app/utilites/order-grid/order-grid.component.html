@@ -1,0 +1,22 @@
+<table  class="table table-hover" style="overflow-y: scroll;">
+    <thead>
+        
+    <tr>
+        <th *ngFor="let col of gridColumns" style="width: 200px;">
+            {{col.colName}}
+        </th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let colObj of gridData">
+        <td *ngFor="let col of gridColumns" style="width:200px">
+            {{colObj[col.colName]}}
+        </td>
+      
+        <td>
+            <a (click)="deletedGrid(colObj)" class="btn btn-outline btn-warning">Cancel Order</a>
+         </td>
+      
+    </tr>
+</tbody>
+</table>

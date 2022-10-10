@@ -1,0 +1,43 @@
+<table  class="table table-bordered" style="overflow-y: scroll;">
+    <thead>
+        
+    <tr>
+        <th *ngFor="let col of gridColumns" style="width: 200px;">
+            {{col.colName}}
+        </th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let colObj of gridData">
+       <!--- <td *ngFor="let col of gridColumns" style="width:200px">-->
+            <!--{{colObj[col.colName]}}-->
+            <td>{{colObj.id}}</td>
+            <td>{{colObj.title}}</td>
+            <td>{{colObj.author}}</td>
+            <td>{{colObj.category}}</td>
+            <td>{{colObj.price}}</td>
+            <td>{{colObj.publisher}}</td>
+            <td>{{colObj.active}}</td>
+            <td style="overflow-y: scroll;">{{colObj.content}}</td>
+            
+        <!--</td>-->
+        <!---<td>
+            <img style="width: 50px;height: 40px;" src="https://localhost:44365/{{colObj.imageUrl}}">
+            
+            </td>-->
+        <td>
+            <a (click)="selectedGrid(colObj)" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" class="btn btn-outline btn-warning">Edit</a> 
+        </td>
+        <td>
+           <a (click)="deletedGrid(colObj)" class="btn btn-outline" style="background-color: crimson;">Delete</a>
+        </td>
+        <td>
+            <a class="btn btn-outline btn-secondary"  (click)="blockGrid(colObj)">block</a>
+        </td>
+       <td>
+            <a class="btn btn-outline btn-secondary"  (click)="unblockGrid(colObj)">unblock</a>
+        </td>
+    </tr>
+</tbody>
+</table>

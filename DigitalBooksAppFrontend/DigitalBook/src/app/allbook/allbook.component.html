@@ -1,0 +1,40 @@
+
+    <div class="card">
+        <div class="card-header">
+            <h2>All Books</h2>
+        </div>
+        <div class="card-body">
+           
+                <!--<app-grid-ui></app-grid-ui>-->
+                <table class=".table-striped">
+                    <tr>
+                        <td style="width:100px;">Title</td>
+                        <td style="width:100px;">Author</td>
+                        <td style="width:100px;">Category</td>
+                        <td style="width:100px;">Active</td>
+                        <td style="width:100px;">Publisher</td>
+                        <td style="width: 100px;">Content</td>
+                        <td  style="width: 100px;">Image</td>
+                      
+                        <td>Action</td>
+                    </tr>
+                    <tr *ngFor="let bk of allbookModels">
+                        <td>{{bk.title}}</td>
+                        <td>{{bk.author}}</td>
+                        <td>{{bk.category}}</td>
+                        <td>{{bk.active}}</td>
+                        <td>{{bk.publisher}}</td>
+                        <td>{{bk.content}}</td>
+                        <td>
+                            <img style="width: 50px;height: 40px;" src="https://localhost:44375/{{bk.imageUrl}}">
+                            
+                            </td>
+                      
+                        <td><button type="button"
+                            style="border:transparent;border-radius: 4px; background-color: green;color: white;" data-bs-toggle="modal" data-bs-target="#exampleModal">Read</button></td>
+                    </tr>
+                </table> 
+            
+        </div>
+    </div>
+

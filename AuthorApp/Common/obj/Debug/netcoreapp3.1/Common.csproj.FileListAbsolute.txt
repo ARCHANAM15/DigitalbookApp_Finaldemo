@@ -1,0 +1,10 @@
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\bin\Debug\netcoreapp3.1\Common.deps.json
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\bin\Debug\netcoreapp3.1\Common.dll
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\bin\Debug\netcoreapp3.1\Common.pdb
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\obj\Debug\netcoreapp3.1\Common.csproj.AssemblyReference.cache
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\obj\Debug\netcoreapp3.1\Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfoInputs.cache
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfo.cs
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\obj\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\obj\Debug\netcoreapp3.1\Common.dll
+D:\DOTNET_Project_DigitalBook\AuthorApp\Common\obj\Debug\netcoreapp3.1\Common.pdb

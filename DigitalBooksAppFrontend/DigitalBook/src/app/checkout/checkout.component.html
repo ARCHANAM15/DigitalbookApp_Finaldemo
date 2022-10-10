@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg" style="background-color:snow;">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+        <h2 style="text-align: center;">welcome {{readername}}</h2>
+    </div>
+    <form class="d-flex" role="LogInform">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <button  class="btn btn mx-2" type="button" data-bs-toggle="collapse" style="background-color: darkgray;"
+                data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="showMyOrders(this.cureentuserid)">
+               My Orders
+            </button>
+        </ul>
+    </form>
+</nav>
+<!--refundalert-->
+<div  *ngIf="refundalert"  class="col-md-7 alert alert-primary" role="alert">&nbsp;&nbsp;&nbsp;
+    Order has been cancelled! <strong>Refund with in 24 hours </strong> 
+<button type="button" (click)="closealert()" style="width: 1px;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<div class="card">
+<!--editmsg-->
+<div  *ngIf="alertOrder"  class="col-md-7 alert alert-success" role="alert" >&nbsp;&nbsp;&nbsp;
+    Book has been ordered successfully.
+<button type="button" (click)="closealert()" style="width:1px;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="card-title">
+       <div class="card-body">
+        <div class="row">
+            <div class="col-sm-2"><label>Address</label></div>
+            <div class=col-sm-3>
+               <input   [(ngModel)]="orderModel.address" style="height:70px;width: 500px;"  class="form-control" type="text" placeholder="Enter address" required/>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+         <div class ="radioStyle">
+            <label for="selectpay" style="text-align: 150px;">Select PaymentMethod : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <br>
+            <br>
+            <input type="radio"   [(ngModel)]="orderModel.paymentMethod" value="Payment with Debit/Credit" (click)="selectpayment($event)">
+            <label for="pay">Payment with Debit/Credit</label> &nbsp;
+            <br>
+            <br>
+            <input type="radio" [(ngModel)]="orderModel.paymentMethod" value="Net Banking"  (click)="selectpayment($event)">
+            <label for="reader">Net Banking</label>&nbsp;&nbsp;
+            <br>
+            <br>
+            <input type="radio" [(ngModel)]="orderModel.paymentMethod" value="Pay on Delivery" (click)="selectpayment($event)">
+            <label for="reader">Pay on Delivery</label>
+        </div>
+        </div>
+        <br>
+        <br>
+       <div class="row">
+           <div class=""></div>
+        <button type="submit" class="btn btn-warning"  style="width: 150px;" (click)="purchase()">Place the Order</button>
+       </div>
+       </div>
+    </div>
+
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="collapse" id="collapseExample">
+            <div class="card-header"><h3>My Orders</h3></div>
+<!--<app-order-grid  [grid-columns]="[{'colName':'id'},{'colName':'OrderDetails'},{'colName':'PaymentMethod}]"
+[grid-data]="orderModels"></app-order-grid>-->
+
+    <app-order-grid
+                [grid-columns]="[{'colName':'id'},{'colName':'reader'},{'colName':'title'},{'colName':'author'},{'colName':'address'},{'colName':'paymentmethod'},{'colName':'orderstatus'},{'colName':'Action'}]"
+                [grid-data]="orderModels"  (grid-deleted)="DeleteBook($event)">
+                - </app-order-grid>
+ 
+ </div>
+</div>
+
+
+
+
+

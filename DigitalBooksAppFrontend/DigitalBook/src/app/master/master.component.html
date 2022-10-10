@@ -1,0 +1,32 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <div class="container">
+       
+        <img [src]="logo" alt="Logo" width="100px" height="80" class="d-inline-block align-text-top" style="color: white;">
+        
+        <form class="d-flex" role="LogInform">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" >Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" *ngIf="LoggedIn(false)" aria-current="page" [routerLink]="['login']">Login</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" *ngIf="LoggedIn(false)" [routerLink]="['register']">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="cursor:pointer" *ngIf="LoggedIn(true)" (click)="Logout()">Logout</a>
+                            </li>
+                        </ul>
+              </form>
+            
+    </div>
+</nav>
+<div class="row" style="margin-top: 1px;">
+    <div class="container">
+    <router-outlet></router-outlet>
+</div>
+</div>
+

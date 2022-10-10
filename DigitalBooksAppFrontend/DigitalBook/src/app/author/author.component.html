@@ -1,0 +1,175 @@
+<nav class="navbar navbar-expand-lg" style="background-color:snow;">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+        <h2>Welcome to Author Page</h2>
+    </div>
+    <!--<form class="d-flex" role="LogInform">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <button class="btn btn mx-2" type="button" data-bs-toggle="collapse" style="background-color: darkgray;"
+                data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                (click)="showMyBooks(this.cureentuserid)">
+                My Books List
+            </button>
+            <li>
+           
+                <a class="nav-link active" aria-current="page" [routerLink]="['allbook']" type="button" style="background-color: darkgray;" (click)="showOthersBook()">All book</a>
+           
+            
+            </li>
+        </ul>
+    </form>-->
+</nav>
+<div class="card">
+ <div class="row">
+        <div class="col-md-7"></div>
+        <div  *ngIf="alert"  class="col-md-3 alert alert-success" role="alert">&nbsp;
+          Book has been added successfully!
+  <button type="button" (click)="closealert()" style="width:1px;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+         <!--deletemsg-->
+         <div  *ngIf="alertdelete"  class="col-md-3 alert alert-danger" role="alert">
+            Book has been deleted successfully!
+    <button type="button" (click)="closealert()"   style="width:1px;"class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+
+<!--unblock-->
+         
+<div  *ngIf="alertunblock"  class="col-md-3 alert alert-success" role="alert">
+    Book has been blocked successfully!
+<button type="button" (click)="closealert()" style="width:1px;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+        <!--blockmsg-->
+
+        <div  *ngIf="alertblock"  class="col-md-3 alert alert-danger" role="alert">
+            Book has been blocked successfully!
+    <button type="button" (click)="closealert()" style="width:1px;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+
+            <!--editmsg-->
+            <div  *ngIf="alertedit"  class="col-md-3 alert alert-primary" role="alert">
+                Book has been edited successfully!
+        <button type="button" (click)="closealert()" style="width:1px;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+
+
+
+
+      
+    <div class="card-body">
+        <div class="container">
+            <div class="form-group row">
+
+                <div class="col-sm-2"><label>Title</label></div>
+                <div class=col-sm-3>
+                    <input [(ngModel)]="BooksModel.title" type="text" class="form-control" placeholder="Enter Title"
+                        #title="ngModel" id="title">
+                    <div *ngIf="title.invalid && (title.dirty || title.untouched)" class="alert">
+                        <div *ngIf="title.errors?.['required']">
+                            <p style="color: red;">Title is required.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <label>Author</label>
+                </div>
+                <div class=col-sm-3>
+                    <input [(ngModel)]="BooksModel.author" class="form-control" type="text" placeholder="Enter Author"  #author="ngModel">
+                    <div *ngIf="author.invalid && (author.dirty || author.untouched)" class="alert">
+                        <div *ngIf="author.errors?.['required']">
+                            <p style="color: red;">author is required.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-2"><label>Price</label></div>
+                <div class=col-sm-3>
+                    <input [(ngModel)]="BooksModel.price" type="text" class="form-control" placeholder="Enter price">
+                </div>
+                <div class="col-sm-2">
+                    <label>Publisher</label>
+                </div>
+                <div class=col-sm-3>
+                    <input [(ngModel)]="BooksModel.publisher" type="text" required class="form-control"
+                        placeholder="Enter Publisher">
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-2"><label>Active</label></div>
+                <div class=col-sm-3>
+                    <input [(ngModel)]="BooksModel.active" type="text" required class="form-control"
+                        placeholder="Enter Active" required>
+                </div>
+                <div class="col-sm-2">
+                    <label>Category</label>
+                </div>
+                <div class=col-sm-3>
+                    <input [(ngModel)]="BooksModel.category" type="text" class="form-control"
+                        placeholder="Enter Category" required>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>Image</label>
+                </div>
+                <div class=col-sm-3>
+                    <input [(ngModel)]="BooksModel.imageUrl" class="form-control" type="file"
+                        (change)="onFileChanged($event)">
+                </div>
+                <div class="col-sm-2">Content</div>
+                <div class="col-sm-3"><input [(ngModel)]="BooksModel.content" class="form-control" type="text"
+                        placeholder="Enter Content" required></div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-sm-7"></div>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-warning" style="width: 90px;" (click)="CreateBooks($event)">Save
+                </button>
+            </div>
+        </div>
+     </div>
+     <br>
+     
+    <div class="card">
+        <!--<div class="collapse" id="collapseExample">-->
+            <div class="card-header">
+                <div class="col-md-3"></div>
+                <h2>My Books</h2>
+            </div>
+            <div class="card-body">
+                <app-grid-ui
+                    [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'author'},{'colName':'category'},{'colName':'price'},{'colName':'publisher'},{'colName':'active'},{'colName':'content'}]"
+                    [grid-data]="BooksModels" (grid-selected)="EditBook($event)" (grid-deleted)="DeleteBook($event)"
+                    (book-block)="BlockBook($event)" (book-unblock)="unBlockBook($event)">
+                    - </app-grid-ui>
+            </div>
+        <!--</div>-->
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<app-grid-ui
+[grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'category'},{'colName':'price'},{'colName':'publisher'},{'colName':'active'},{'colName':'content'}]"
+[grid-data]="BooksModels" (grid-selected)="EditBook($event)" (grid-deleted)="DeleteCustomer($event)">
+- </app-grid-ui>-->
